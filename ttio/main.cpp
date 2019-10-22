@@ -27,7 +27,7 @@ uint8_t cid = 0;
 const uint8_t band = 20;
 unsigned long baud = 9600;
 
-// BELOW IS THE IP AND PORT FOR THE ENDPOINT
+// BELOW IS THE IP AND PORT FOR THE ENDPOINT in this case thethings.io
 const String ip = "\"104.199.85.211\"";
 String port = "28399";
 int con;
