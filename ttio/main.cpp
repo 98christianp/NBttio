@@ -8,11 +8,11 @@
 #include "Sodaq_wdt.h"
 
 // VARIABLE INITIALIZATIONS
-
-String gps = "";
 int red_light_pin= 2;
 int green_light_pin = 3;
 int blue_light_pin = 4;
+int GPS_TIME = 120;
+
 
 // APN and forceoperator below lpwa.telia.iot is the APN for Telia, TDC, and other operators have different ones
 const char* apn = "lpwa.telia.iot";
@@ -26,8 +26,9 @@ const String token = "014439733952576939532d7a776f533247714e5171356d5a4676595476
 uint8_t cid = 0;
 const uint8_t band = 20;
 unsigned long baud = 9600;
+String gps = "";
 
-// BELOW IS THE IP AND PORT FOR THE ENDPOINT in this case thethings.io
+// BELOW IS THE IP AND PORT FOR THE ENDPOINT
 const String ip = "\"104.199.85.211\"";
 String port = "28399";
 int con;
@@ -351,7 +352,7 @@ String find_fix(uint32_t delay_until)
     RGB_color(255,255,255);
     uint32_t start = millis();
     delay(delay_until);
-    uint32_t timer = 120*1000;
+    uint32_t timer = GPS_TIME*1000;
     uint32_t timeout = 30 * 1000;
     while( (millis() - start) < timer){
         if (sodaq_gps.scan(false, timeout)) {
